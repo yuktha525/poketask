@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PokéTask — Sinnoh Edition</title>
+  
+  <!-- Pokémon Game Style Pixel Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+  
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="full-screen-app">
+    
+    <!-- ========================================================
+         SCREEN 1: REGISTRATION / PROFESSOR INTRO
+         ======================================================== -->
+    <section class="screen-view active" id="registrationScreen">
+      <div class="center-content-wrapper">
+        
+        <!-- Game Logo Banner -->
+        <header class="game-logo-container">
+          <div class="version-badges">
+            <span class="badge diamond-badge">DIAMOND</span>
+            <span class="badge pearl-badge">PEARL</span>
+          </div>
+          <h1 class="game-title">POKÉTASK</h1>
+          <p class="game-subtitle">SINNOH REGION TRAINER REGISTRATION</p>
+        </header>
+
+        <!-- Registration Dialogue Card -->
+        <div class="dp-game-card">
+          <div class="card-dialogue-strip">
+            <span class="prompt-icon">▶</span>
+            <p class="dialogue-text">
+              "Welcome to the world of Pokémon! Choose your character and enter your name to begin."
+            </p>
+          </div>
+
+          <form id="registrationForm" class="registration-form">
+            <!-- 1. Trainer Name -->
+            <div class="form-group">
+              <label for="trainerNameInput" class="pixel-label">1. TRAINER NAME:</label>
+              <div class="pixel-input-box">
+                <span class="input-arrow">▶</span>
+                <input 
+                  type="text" 
+                  id="trainerNameInput" 
+                  class="pixel-input" 
+                  placeholder="ENTER YOUR NAME..." 
+                  maxlength="14"
+                  required
+                  autocomplete="off"
+                />
+              </div>
+            </div>
+
+            <!-- 2. Avatar Selection (Only Human Characters) -->
+            <div class="form-group">
+              <label class="pixel-label">2. CHOOSE YOUR CHARACTER:</label>
+              <div class="avatar-grid" id="avatarGrid">
+                
+                <!-- Lucas -->
+                <label class="avatar-option selected">
+                  <input type="radio" name="trainerAvatar" value="lucas" checked />
+                  <div class="avatar-card" title="Lucas">
+                    <div class="avatar-svg-box">
+                      <svg viewBox="0 0 40 40" class="character-svg">
+                        <rect x="12" y="4" width="16" height="8" fill="#dc2626" rx="2" />
+                        <rect x="10" y="9" width="20" height="3" fill="#991b1b" />
+                        <circle cx="20" cy="8" r="2.5" fill="#ffffff" />
+                        <rect x="13" y="12" width="14" height="10" fill="#fbcfe8" />
+                        <rect x="11" y="13" width="3" height="7" fill="#1e1b4b" />
+                        <rect x="26" y="13" width="3" height="7" fill="#1e1b4b" />
+                        <rect x="15" y="16" width="2" height="3" fill="#1e293b" />
+                        <rect x="23" y="16" width="2" height="3" fill="#1e293b" />
+                        <rect x="10" y="22" width="20" height="5" fill="#f8fafc" />
+                        <rect x="8" y="27" width="24" height="11" fill="#1e3a8a" rx="2" />
+                        <rect x="17" y="27" width="6" height="11" fill="#0284c7" />
+                      </svg>
+                    </div>
+                  </div>
+                </label>
+
+                <!-- Dawn -->
+                <label class="avatar-option">
+                  <input type="radio" name="trainerAvatar" value="dawn" />
+                  <div class="avatar-card" title="Dawn">
+                    <div class="avatar-svg-box">
+                      <svg viewBox="0 0 40 40" class="character-svg">
+                        <rect x="11" y="4" width="18" height="9" fill="#f8fafc" rx="3" />
+                        <circle cx="20" cy="8" r="3" fill="#f472b6" />
+                        <rect x="8" y="12" width="6" height="14" fill="#1e3a8a" />
+                        <rect x="26" y="12" width="6" height="14" fill="#1e3a8a" />
+                        <rect x="13" y="12" width="14" height="10" fill="#fbcfe8" />
+                        <rect x="15" y="15" width="2" height="3" fill="#0284c7" />
+                        <rect x="23" y="15" width="2" height="3" fill="#0284c7" />
+                        <rect x="10" y="22" width="20" height="5" fill="#ec4899" />
+                        <rect x="9" y="27" width="22" height="11" fill="#0f172a" rx="2" />
+                        <rect x="13" y="28" width="14" height="10" fill="#f472b6" />
+                      </svg>
+                    </div>
+                  </div>
+                </label>
+
+                <!-- Barry -->
+                <label class="avatar-option">
+                  <input type="radio" name="trainerAvatar" value="barry" />
+                  <div class="avatar-card" title="Barry">
+                    <div class="avatar-svg-box">
+                      <svg viewBox="0 0 40 40" class="character-svg">
+                        <polygon points="12,5 15,2 18,6 20,1 23,6 26,2 29,6" fill="#fde047" />
+                        <rect x="11" y="6" width="18" height="6" fill="#facc15" />
+                        <rect x="13" y="12" width="14" height="10" fill="#fbcfe8" />
+                        <rect x="15" y="16" width="2" height="2" fill="#ca8a04" />
+                        <rect x="23" y="16" width="2" height="2" fill="#ca8a04" />
+                        <rect x="10" y="22" width="20" height="5" fill="#ea580c" />
+                        <rect x="8" y="27" width="24" height="11" fill="#15803d" rx="2" />
+                        <rect x="15" y="27" width="10" height="11" fill="#f97316" />
+                      </svg>
+                    </div>
+                  </div>
+                </label>
+
+                <!-- Cynthia -->
+                <label class="avatar-option">
+                  <input type="radio" name="trainerAvatar" value="cynthia" />
+                  <div class="avatar-card" title="Cynthia">
+                    <div class="avatar-svg-box">
+                      <svg viewBox="0 0 40 40" class="character-svg">
+                        <rect x="8" y="4" width="24" height="18" fill="#fef08a" rx="4" />
+                        <rect x="6" y="10" width="7" height="22" fill="#fde047" />
+                        <rect x="27" y="10" width="7" height="22" fill="#fde047" />
+                        <rect x="8" y="12" width="4" height="3" fill="#0f172a" />
+                        <rect x="28" y="12" width="4" height="3" fill="#0f172a" />
+                        <rect x="14" y="10" width="12" height="11" fill="#fbcfe8" />
+                        <rect x="16" y="14" width="2" height="3" fill="#64748b" />
+                        <rect x="22" y="14" width="2" height="3" fill="#64748b" />
+                        <rect x="9" y="21" width="22" height="17" fill="#09090b" rx="2" />
+                        <circle cx="20" cy="24" r="2" fill="#38bdf8" />
+                      </svg>
+                    </div>
+                  </div>
+                </label>
+
+                <!-- Red -->
+                <label class="avatar-option">
+                  <input type="radio" name="trainerAvatar" value="red" />
+                  <div class="avatar-card" title="Red">
+                    <div class="avatar-svg-box">
+                      <svg viewBox="0 0 40 40" class="character-svg">
+                        <rect x="11" y="4" width="18" height="8" fill="#dc2626" rx="2" />
+                        <rect x="9" y="9" width="22" height="3" fill="#ffffff" />
+                        <rect x="11" y="12" width="3" height="8" fill="#18181b" />
+                        <rect x="26" y="12" width="3" height="8" fill="#18181b" />
+                        <rect x="13" y="12" width="14" height="10" fill="#fbcfe8" />
+                        <rect x="15" y="16" width="2" height="3" fill="#991b1b" />
+                        <rect x="23" y="16" width="2" height="3" fill="#991b1b" />
+                        <rect x="8" y="22" width="24" height="16" fill="#dc2626" rx="2" />
+                        <rect x="14" y="22" width="12" height="16" fill="#18181b" />
+                        <rect x="17" y="22" width="6" height="16" fill="#ffffff" />
+                      </svg>
+                    </div>
+                  </div>
+                </label>
+
+              </div>
+            </div>
+
+            <!-- Start Adventure Button -->
+            <button type="submit" class="dp-gold-btn start-btn" id="startAdventureBtn">
+              <span>START ADVENTURE ▶</span>
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SCREEN 2: FULL SCREEN HOME PAGE
+         ======================================================== -->
+    <section class="screen-view" id="homeScreen">
+      <div class="home-layout-container">
+        
+        <!-- Top Nav Header: Trainer Status Bar & 10-Day Streak Incubator -->
+        <header class="home-top-bar">
+          <div class="trainer-pill">
+            <div class="trainer-avatar-mini" id="homeAvatarDisplay"></div>
+            <div class="trainer-meta">
+              <h2 class="trainer-display-name" id="homeTrainerName">PLAYER</h2>
+            </div>
+          </div>
+
+          <!-- 10-Day Streak Incubator Widget -->
+          <div class="streak-incubator-widget">
+            <div class="incubator-icon-wrap" id="incubatorIconWrap">
+              <span class="incubator-egg-icon">🥚</span>
+            </div>
+            <div class="incubator-details">
+              <div class="incubator-label-row">
+                <span class="incubator-title">STREAK:</span>
+                <span class="streak-count" id="streakDaysCount">0/10 DAYS</span>
+              </div>
+              <div class="incubator-meter-track">
+                <div class="incubator-meter-fill" id="streakMeterFill" style="width: 0%;"></div>
+              </div>
+            </div>
+            <!-- Test button so user and GDG interviewers can simulate advancing days -->
+            <button class="test-advance-btn" id="testAdvanceStreakBtn" title="Test 10-day milestone instantly">+1 DAY</button>
+          </div>
+
+          <div class="top-bar-stats">
+            <button class="sound-toggle-btn" id="soundToggleBtn" title="Toggle Retro Sound Effects">
+              🔊
+            </button>
+            <button class="dp-pokedex-trigger-btn" id="openPokedexBtn" title="View your collection">
+              📖 POKÉDEX (<span id="caughtCountDisplay">0</span>)
+            </button>
+            <button class="dp-outline-btn" id="switchProfileBtn" title="Switch Avatar or Name">
+              ⚙ PROFILE
+            </button>
+          </div>
+        </header>
+
+        <!-- Main Workspace Area -->
+        <main class="home-main-area">
+          
+          <!-- Add Task Card with Slidedown Configuration -->
+          <section class="dp-game-card task-create-card">
+            <div class="card-header-bar">
+              <span class="pokeball-icon">🔴</span>
+              <h3 class="card-title">ASSIGN NEW MISSION</h3>
+            </div>
+
+            <form id="taskMissionForm" class="mission-form">
+              <!-- Primary Task Input -->
+              <div class="pixel-input-box main-task-input">
+                <span class="input-arrow">▶</span>
+                <input 
+                  type="text" 
+                  id="taskNameInput" 
+                  class="pixel-input" 
+                  placeholder="CLICK HERE TO TYPE TASK..." 
+                  maxlength="65"
+                  required
+                  autocomplete="off"
+                />
+              </div>
+
+              <!-- Animated Slidedown Panel -->
+              <div class="task-slidedown-panel" id="taskSlidedownPanel">
+                
+                <!-- 1. Difficulty & Reward Tier Selection -->
+                <div class="slidedown-group">
+                  <label class="pixel-label">DIFFICULTY & REWARD TIER (GEN 1 & 2):</label>
+                  <div class="tier-selector-pills">
+                    
+                    <!-- Easy Tier: Level 1 -->
+                    <label class="tier-pill tier-easy selected">
+                      <input type="radio" name="missionTier" value="easy" checked />
+                      <div class="tier-pill-inner">
+                        <span class="ball-sprite-icon">🔴</span>
+                        <div class="tier-text-wrap">
+                          <span class="tier-title">EASY</span>
+                          <span class="tier-sub">LEVEL 1 POKÉMON</span>
+                        </div>
+                      </div>
+                    </label>
+
+                    <!-- Medium Tier: Level 2 -->
+                    <label class="tier-pill tier-medium">
+                      <input type="radio" name="missionTier" value="medium" />
+                      <div class="tier-pill-inner">
+                        <span class="ball-sprite-icon">🔵</span>
+                        <div class="tier-text-wrap">
+                          <span class="tier-title">MEDIUM</span>
+                          <span class="tier-sub">LEVEL 2 POKÉMON</span>
+                        </div>
+                      </div>
+                    </label>
+
+                    <!-- Hard Tier: Level 3 -->
+                    <label class="tier-pill tier-hard">
+                      <input type="radio" name="missionTier" value="hard" />
+                      <div class="tier-pill-inner">
+                        <span class="ball-sprite-icon">🟡</span>
+                        <div class="tier-text-wrap">
+                          <span class="tier-title">HARD</span>
+                          <span class="tier-sub">LEVEL 3 POKÉMON</span>
+                        </div>
+                      </div>
+                    </label>
+
+                  </div>
+                </div>
+
+                <!-- 2. Deadline Picker -->
+                <div class="slidedown-group">
+                  <label for="taskDeadlineInput" class="pixel-label">DEADLINE:</label>
+                  <div class="deadline-input-row">
+                    <input 
+                      type="date" 
+                      id="taskDeadlineInput" 
+                      class="pixel-date-picker" 
+                    />
+                    <span class="deadline-hint">Leave blank for today</span>
+                  </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="slidedown-actions">
+                  <button type="submit" class="dp-gold-btn deploy-mission-btn">
+                    <span>⚔️ ADD TO MISSION LOG ▶</span>
+                  </button>
+                </div>
+
+              </div>
+            </form>
+          </section>
+
+          <!-- Active Task Mission Log Queue -->
+          <section class="dp-game-card task-roster-card">
+            <div class="card-header-bar">
+              <span class="pokeball-icon">🎒</span>
+              <h3 class="card-title">MISSION LOG</h3>
+              <span class="roster-counter" id="activeTasksCount">0 MISSIONS</span>
+            </div>
+
+            <!-- Task List -->
+            <ul class="task-list" id="taskList">
+              <!-- Dynamically populated by JS -->
+            </ul>
+
+            <!-- Empty State -->
+            <div class="roster-content" id="rosterEmptyState">
+              <div class="empty-icon">🌱</div>
+              <p class="empty-title">NO ACTIVE MISSIONS</p>
+              <p class="empty-desc">Type a task above, choose difficulty, and click its Pokéball to catch Pokémon!</p>
+            </div>
+          </section>
+
+        </main>
+
+        <!-- Bottom Dialogue Bar (Screenshot style) -->
+        <footer class="bottom-dialogue-console">
+          <div class="dialogue-inner-frame">
+            <p class="dialogue-prompt-text" id="homeDialogueText">
+              What will TRAINER do?
+            </p>
+            <div class="ds-touch-indicator">
+              <span class="touch-rect-white"></span>
+              <span class="touch-rect-pink"></span>
+            </div>
+          </div>
+        </footer>
+
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ========================================================
+       POKÉBALL CAPTURE ANIMATION & PROFESSOR OAK MODAL
+       (Emoji removed after Mission Accomplished)
+       ======================================================== -->
+  <div class="modal-backdrop" id="captureModal" style="display: none;">
+    <div class="oak-reward-card">
+      <div class="reward-header-banner">
+        <span class="banner-text" id="modalBannerTitle">CAPTURING POKÉMON...</span>
+      </div>
+
+      <!-- Caught Pokémon Stage -->
+      <div class="caught-stage" id="caughtStageArea">
+        
+        <!-- Active 3-Shake Animated Pokéball Sequence -->
+        <div class="pokeball-catch-sequence" id="pokeballAnimationBox">
+          <div class="animating-pokeball" id="animatingBall">
+            <div class="pokeball-top"></div>
+            <div class="pokeball-center-line"></div>
+            <div class="pokeball-center-button"></div>
+            <div class="pokeball-bottom"></div>
+          </div>
+          <p class="catch-status-caption" id="catchStatusCaption">Wobble... Wobble...</p>
+        </div>
+
+        <!-- Revealed Pokémon Stage -->
+        <div class="revealed-pokemon-content" id="revealedPokemonContent" style="display: none;">
+          <div class="stage-radial-glow"></div>
+          <img src="" alt="Caught Pokémon" id="caughtPokemonImg" class="caught-pokemon-sprite" />
+          <div class="pokemon-meta-badge">
+            <span class="caught-tier-pill" id="caughtTierBadge">LEVEL 1 POKÉMON</span>
+            <h3 class="caught-name" id="caughtPokemonName">PIKACHU</h3>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Professor Oak Dialogue Box with Pokédex Entry -->
+      <div class="oak-dialogue-frame" id="oakDialogueFrame" style="display: none;">
+        <div class="oak-portrait-box">
+          <svg viewBox="0 0 40 40" class="oak-svg">
+            <rect x="10" y="4" width="20" height="12" fill="#cbd5e1" rx="4" />
+            <rect x="8" y="10" width="6" height="10" fill="#94a3b8" />
+            <rect x="26" y="10" width="6" height="10" fill="#94a3b8" />
+            <rect x="13" y="10" width="14" height="12" fill="#fbcfe8" />
+            <rect x="15" y="14" width="2" height="3" fill="#1e293b" />
+            <rect x="23" y="14" width="2" height="3" fill="#1e293b" />
+            <rect x="15" y="22" width="10" height="18" fill="#dc2626" />
+            <rect x="8" y="22" width="8" height="18" fill="#f8fafc" />
+            <rect x="24" y="22" width="8" height="18" fill="#f8fafc" />
+          </svg>
+          <span class="oak-name-tag">PROF. OAK</span>
+        </div>
+
+        <div class="oak-speech-bubble">
+          <div class="pokedex-quote-header">POKÉDEX DATA:</div>
+          <p class="oak-speech-text" id="oakSpeechText"></p>
+        </div>
+      </div>
+
+      <!-- Claim Button -->
+      <button class="dp-gold-btn claim-pokemon-btn" id="claimRewardBtn" style="display: none;">
+        <span>COLLECT TO POKÉDEX ▶</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ========================================================
+       10-DAY STREAK MYSTERY EGG HATCHING MODAL
+       ======================================================== -->
+  <div class="modal-backdrop" id="eggHatchModal" style="display: none;">
+    <div class="oak-reward-card egg-hatch-card">
+      <div class="reward-header-banner egg-hatch-banner">
+        <span class="banner-text" id="eggBannerTitle">OH? AN EGG IS HATCHING!</span>
+      </div>
+
+      <!-- Egg Stage -->
+      <div class="caught-stage egg-stage-box">
+        
+        <!-- Cracking Animated Egg Container -->
+        <div class="egg-animation-sequence" id="eggAnimationSequence">
+          <div class="pixel-egg" id="pixelEgg">
+            <div class="egg-spots spot-1"></div>
+            <div class="egg-spots spot-2"></div>
+            <div class="egg-spots spot-3"></div>
+            <div class="egg-crack-line line-1" id="crackLine1"></div>
+            <div class="egg-crack-line line-2" id="crackLine2"></div>
+          </div>
+          <p class="egg-status-caption" id="eggStatusCaption">The Egg is shaking...</p>
+        </div>
+
+        <!-- Hatched Pokémon Reveal Stage -->
+        <div class="hatched-pokemon-reveal" id="hatchedPokemonReveal" style="display: none;">
+          <div class="stage-radial-glow mythic-glow"></div>
+          <img src="" alt="Hatched Pokémon" id="hatchedPokemonImg" class="caught-pokemon-sprite animate-hatched" />
+          <div class="pokemon-meta-badge">
+            <span class="caught-tier-pill mythic-tier-pill">10-DAY STREAK HATCH!</span>
+            <h3 class="caught-name" id="hatchedPokemonName">TOGEPI</h3>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Professor Oak Dialogue Box for Hatching -->
+      <div class="oak-dialogue-frame" id="eggOakDialogue" style="display: none;">
+        <div class="oak-portrait-box">
+          <svg viewBox="0 0 40 40" class="oak-svg">
+            <rect x="10" y="4" width="20" height="12" fill="#cbd5e1" rx="4" />
+            <rect x="8" y="10" width="6" height="10" fill="#94a3b8" />
+            <rect x="26" y="10" width="6" height="10" fill="#94a3b8" />
+            <rect x="13" y="10" width="14" height="12" fill="#fbcfe8" />
+            <rect x="15" y="14" width="2" height="3" fill="#1e293b" />
+            <rect x="23" y="14" width="2" height="3" fill="#1e293b" />
+            <rect x="15" y="22" width="10" height="18" fill="#dc2626" />
+            <rect x="8" y="22" width="8" height="18" fill="#f8fafc" />
+            <rect x="24" y="22" width="8" height="18" fill="#f8fafc" />
+          </svg>
+          <span class="oak-name-tag">PROF. OAK</span>
+        </div>
+
+        <div class="oak-speech-bubble">
+          <div class="pokedex-quote-header">10-DAY STREAK DISCOVERY:</div>
+          <p class="oak-speech-text" id="eggOakSpeechText"></p>
+        </div>
+      </div>
+
+      <!-- Claim Hatched Pokémon Button -->
+      <button class="dp-gold-btn claim-pokemon-btn" id="claimHatchBtn" style="display: none;">
+        <span>CLAIM HATCHED REWARD & RESTART STREAK ▶</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ========================================================
+       SINNOH POKÉDEX COLLECTION ARCHIVE MODAL
+       ======================================================== -->
+  <div class="modal-backdrop" id="pokedexModal" style="display: none;">
+    <div class="pokedex-archive-window">
+      
+      <!-- Pokédex Titlebar (Classic Red/Dark Metal) -->
+      <div class="pokedex-titlebar">
+        <div class="titlebar-left">
+          <span class="pokedex-led-lens"></span>
+          <span class="pokedex-title">SINNOH POKÉDEX ARCHIVE</span>
+        </div>
+        <button class="close-pokedex-btn" id="closePokedexBtn" title="Close Pokédex">&times;</button>
+      </div>
+
+      <!-- Pokédex Filter & Stats Bar -->
+      <div class="pokedex-control-bar">
+        <div class="pokedex-stats-summary">
+          <span>ENTRIES: <strong id="dexEntriesCount">0</strong></span>
+        </div>
+        <div class="pokedex-filter-pills" id="pokedexFilters">
+          <button class="dex-filter-pill active" data-filter="all">ALL</button>
+          <button class="dex-filter-pill" data-filter="easy">LV.1</button>
+          <button class="dex-filter-pill" data-filter="medium">LV.2</button>
+          <button class="dex-filter-pill" data-filter="hard">LV.3</button>
+          <button class="dex-filter-pill" data-filter="streak">★ STREAK</button>
+        </div>
+      </div>
+
+      <!-- Pokémon Cards Grid -->
+      <div class="pokedex-scroll-area">
+        <div class="pokedex-grid" id="pokedexGrid">
+          <!-- Dynamically populated via JS -->
+        </div>
+
+        <!-- Empty State if no Pokémon caught yet -->
+        <div class="pokedex-empty-state" id="pokedexEmptyState" style="display: none;">
+          <div class="empty-dex-icon">📖</div>
+          <p class="empty-dex-title">NO POKÉMON REGISTERED YET</p>
+          <p class="empty-dex-sub">Complete tasks from your Mission Log to catch Pokémon and fill your Pokédex!</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
