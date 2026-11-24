@@ -454,9 +454,12 @@ function renderTaskList() {
 
     li.innerHTML = `
       <div class="task-item-left">
-        <button class="pokeball-catch-box" data-action="catch" title="Click to complete task & catch Pokémon!">
-          <span class="pokeball-sprite">${ballIcon}</span>
-        </button>
+        <div class="pokeball-btn-wrap">
+          <button class="pokeball-catch-box" data-action="catch" title="Click to complete task & catch Pokémon!">
+            <span class="pokeball-sprite">${ballIcon}</span>
+          </button>
+          <span class="complete-label">DONE</span>
+        </div>
         <div class="task-item-content">
           <span class="task-item-name">${escapeHTML(task.title.toUpperCase())}</span>
           <div class="task-item-tags">
@@ -465,7 +468,10 @@ function renderTaskList() {
           </div>
         </div>
       </div>
-      <button class="delete-task-btn" data-action="delete" title="Cancel Mission">&times;</button>
+      <div class="delete-btn-wrap">
+        <button class="delete-task-btn" data-action="delete" title="Cancel Mission">&times;</button>
+        <span class="cancel-label">CANCEL</span>
+      </div>
     `;
 
     taskListEl.appendChild(li);
@@ -485,16 +491,16 @@ taskListEl.addEventListener('click', (e) => {
   const task = appTasks.find(t => t.id === taskId);
   if (!task) return;
 
-  if (target.dataset.action === 'delete') {
+  if (target.dataset.action === 'catch' || target.closest('[data-action="catch"]')) {
+    startPokeballCaptureSequence(task);
+  }
+  
+  if (target.dataset.action === 'delete' || target.closest('[data-action="delete"]')) {
     appTasks = appTasks.filter(t => t.id !== taskId);
     saveData();
     renderTaskList();
     homeDialogueText.textContent = `Mission cancelled.`;
     return;
-  }
-
-  if (target.dataset.action === 'catch' || target.closest('[data-action="catch"]')) {
-    startPokeballCaptureSequence(task);
   }
 });
 
@@ -554,11 +560,17 @@ function startPokeballCaptureSequence(task) {
 
     // No emojis in banner
     modalBannerTitle.textContent = 'MISSION ACCOMPLISHED!';
+    // Show the completed task name so the user knows what they just finished
+    const modalTaskLabel = document.getElementById('modalTaskLabel');
+    if (modalTaskLabel) {
+      modalTaskLabel.textContent = `Completed: "${task.title.toUpperCase()}"`;
+    }
     
     // Unique one-liner Pokédex description
     oakSpeechText.innerHTML = `
-      "Ah, <strong>${chosenPokemon.name}</strong>! <br>
-      <em>"${chosenPokemon.desc}"</em> <br><br>
+      Congratulations on completing <strong>"${escapeHTML(task.title)}"</strong>!<br><br>
+      As your reward, you caught <strong>${chosenPokemon.name}</strong>!<br><br>
+      <em>"${chosenPokemon.desc}"</em><br><br>
       — <strong>Professor Oak</strong>
     `;
 

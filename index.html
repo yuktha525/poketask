@@ -36,14 +36,21 @@
           <div class="card-dialogue-strip">
             <span class="prompt-icon">▶</span>
             <p class="dialogue-text">
-              "Welcome to the world of Pokémon! Choose your character and enter your name to begin."
+              "Welcome to PokéTask! Set up your trainer profile to get started. Complete tasks to catch Pokémon!"
             </p>
+          </div>
+
+          <!-- Data Storage Notice -->
+          <div class="data-notice-banner">
+            <span class="data-notice-icon">💾</span>
+            <span class="data-notice-text">Your data is saved in your browser — no account or internet needed after first load.</span>
           </div>
 
           <form id="registrationForm" class="registration-form">
             <!-- 1. Trainer Name -->
             <div class="form-group">
-              <label for="trainerNameInput" class="pixel-label">1. TRAINER NAME:</label>
+              <label for="trainerNameInput" class="pixel-label">STEP 1 — YOUR NAME:</label>
+              <p class="form-hint">This is the name shown throughout the app.</p>
               <div class="pixel-input-box">
                 <span class="input-arrow">▶</span>
                 <input 
@@ -60,7 +67,8 @@
 
             <!-- 2. Avatar Selection (Only Human Characters) -->
             <div class="form-group">
-              <label class="pixel-label">2. CHOOSE YOUR CHARACTER:</label>
+              <label class="pixel-label">STEP 2 — CHOOSE YOUR CHARACTER:</label>
+              <p class="form-hint">Pick the trainer that represents you. This is just visual.</p>
               <div class="avatar-grid" id="avatarGrid">
                 
                 <!-- Lucas -->
@@ -234,6 +242,7 @@
             <div class="card-header-bar">
               <span class="pokeball-icon">🔴</span>
               <h3 class="card-title">ASSIGN NEW MISSION</h3>
+              <span class="card-hint-label">← Add a new task here</span>
             </div>
 
             <form id="taskMissionForm" class="mission-form">
@@ -256,7 +265,8 @@
                 
                 <!-- 1. Difficulty & Reward Tier Selection -->
                 <div class="slidedown-group">
-                  <label class="pixel-label">DIFFICULTY & REWARD TIER (GEN 1 & 2):</label>
+                  <label class="pixel-label">DIFFICULTY & REWARD TIER:</label>
+                  <p class="form-hint">Higher difficulty = rarer Pokémon reward when you complete it!</p>
                   <div class="tier-selector-pills">
                     
                     <!-- Easy Tier: Level 1 -->
@@ -329,6 +339,8 @@
               <h3 class="card-title">MISSION LOG</h3>
               <span class="roster-counter" id="activeTasksCount">0 MISSIONS</span>
             </div>
+            <!-- Guide for new users -->
+            <p class="mission-log-hint">Click the coloured ball next to any task to mark it as COMPLETE and earn a Pokémon reward!</p>
 
             <!-- Task List -->
             <ul class="task-list" id="taskList">
@@ -348,6 +360,7 @@
         <!-- Bottom Dialogue Bar (Screenshot style) -->
         <footer class="bottom-dialogue-console">
           <div class="dialogue-inner-frame">
+            <span class="dialogue-label">LAST ACTION:</span>
             <p class="dialogue-prompt-text" id="homeDialogueText">
               What will TRAINER do?
             </p>
@@ -370,7 +383,8 @@
   <div class="modal-backdrop" id="captureModal" style="display: none;">
     <div class="oak-reward-card">
       <div class="reward-header-banner">
-        <span class="banner-text" id="modalBannerTitle">CAPTURING POKÉMON...</span>
+        <span class="banner-text" id="modalBannerTitle">CAPTURING POKEMON...</span>
+        <span class="modal-task-label" id="modalTaskLabel"></span>
       </div>
 
       <!-- Caught Pokémon Stage -->

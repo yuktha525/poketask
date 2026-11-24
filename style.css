@@ -1294,3 +1294,119 @@ html, body {
   .streak-incubator-widget { width: 100%; justify-content: space-between; }
   .pokedex-grid { grid-template-columns: 1fr; }
 }
+
+/* ==========================================================================
+   UX IMPROVEMENT ADDITIONS — Helper hints, labels, data notice
+   ========================================================================== */
+
+/* --- Data Storage Notice Banner (Registration Screen) --- */
+.data-notice-banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(56, 189, 248, 0.15);
+  border: 1px solid #38bdf8;
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin-bottom: 4px;
+}
+
+.data-notice-icon {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.data-notice-text {
+  font-size: 0.5rem;
+  color: #0c4a6e;
+  line-height: 1.6;
+  font-family: var(--font-pixel);
+}
+
+/* --- Form Step Hints (Registration) --- */
+.form-hint {
+  font-family: var(--font-pixel);
+  font-size: 0.48rem;
+  color: #64748b;
+  margin-top: -6px;
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+/* --- Add Task Card header hint --- */
+.card-hint-label {
+  font-family: var(--font-pixel);
+  font-size: 0.45rem;
+  color: #64748b;
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+/* --- Mission Log Hint Line --- */
+.mission-log-hint {
+  font-family: var(--font-pixel);
+  font-size: 0.45rem;
+  color: #475569;
+  line-height: 1.6;
+  padding: 6px 12px 2px 12px;
+  text-align: center;
+  background: rgba(248, 250, 252, 0.6);
+  border-bottom: 1px dashed #cbd5e1;
+}
+
+/* --- Pokéball button wrapper with DONE label underneath --- */
+.pokeball-btn-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  flex-shrink: 0;
+}
+
+.complete-label {
+  font-family: var(--font-pixel);
+  font-size: 0.38rem;
+  color: #10b981;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+/* --- Delete button wrapper with CANCEL label --- */
+.delete-btn-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  flex-shrink: 0;
+}
+
+.cancel-label {
+  font-family: var(--font-pixel);
+  font-size: 0.38rem;
+  color: #ef4444;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+/* --- Dialogue bar LAST ACTION label --- */
+.dialogue-label {
+  font-family: var(--font-pixel);
+  font-size: 0.45rem;
+  color: #94a3b8;
+  letter-spacing: 0.08em;
+  margin-bottom: 4px;
+  display: block;
+}
+
+/* --- Modal task label (shows completed task name in banner) --- */
+.modal-task-label {
+  display: block;
+  font-family: var(--font-pixel);
+  font-size: 0.5rem;
+  color: rgba(255, 255, 255, 0.85);
+  margin-top: 6px;
+  letter-spacing: 0.04em;
+  text-align: center;
+  word-break: break-word;
+  padding: 0 12px;
+}
