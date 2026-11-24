@@ -1,4 +1,4 @@
-# 🎮 PokéTask — Sinnoh Edition
+# PokéTask 
 
 > A gamified productivity web application inspired by Pokémon Diamond & Pearl, designed to defeat task paralysis through tiered rewards, real-time audio synthesis, and persistent habit tracking.
 
